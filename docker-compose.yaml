@@ -34,6 +34,12 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
     - redis
+
+  pushgateway:
+    image: prom/pushgateway
+    container_name: pushgateway
+    ports:
+    - 9091:9091
     
   redis:
     image: redis:latest

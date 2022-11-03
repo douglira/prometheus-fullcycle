@@ -25,10 +25,15 @@ scrape_configs:
     static_configs:
     - targets:
       - cadvisor:8080
-
-  # Get metrics from Go application
-  - job_name: goapp
+  - job_name: 'pushgateway'
     scrape_interval: 5s
+    honor_labels: true
     static_configs:
-    - targets:
-      - app:8181
+      - targets:
+          - pushgateway:9091
+  # Get metrics from Go application
+  # - job_name: goapp
+  #   scrape_interval: 5s
+  #   static_configs:
+  #   - targets:
+  #     - app:8181
